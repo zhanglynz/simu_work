@@ -24,3 +24,8 @@ A_wins <- function(seed = 12345)
 N <- 1e6
 mean(vapply(1:N, A_wins, numeric(1))) # 0.508656
 # (10355/22631)?
+
+q_a <- 31/36
+q_b <- 5/6
+p_a <- 5/36
+(1 - q_a * q_b + 5 * q_b * p_a) / (6 * (1 - q_a * q_b)) #  0.5081967
