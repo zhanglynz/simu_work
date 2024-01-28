@@ -3,9 +3,10 @@
 # reference: https://en.wikipedia.org/wiki/Problem_of_points
 # https://probabilityandstats.wordpress.com/2016/11/06/the-problem-of-points/
 
-a_game <- function(s, s_1, s_2, seed = 12345)
-{set.seed(seed)
- a_win_nbr <- s_1
+set.seed(12345)
+
+a_game <- function(s = 6, s_1 = 5, s_2 = 2)
+{a_win_nbr <- s_1
  b_win_nbr <- s_2
  while(1) {
    rand_nbr <- rbinom(1, 1, 0.5)
@@ -23,9 +24,10 @@ a_game <- function(s, s_1, s_2, seed = 12345)
  return(the_re)
 } 
  
-N <- 1000000
+N <- 10000
  
-(mean(vapply(1:N, a_game, FUN.VALUE = numeric(1), s = 6, s_1 = 5, s_2 = 2)))
+(mean(vapply(1:N, function(i) a_game(s = 6, s_1 = 5, s_2 = 2), 
+             FUN.VALUE = numeric(1))))
 (15/16)
 
   

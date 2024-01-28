@@ -2,9 +2,10 @@
 # description: a problem from Huygens' book
 # reference: Chen Xiru's book, pp. 11-12
 
-A_wins <- function(seed = 12345)
-{set.seed(seed)
- rand_nbr <- ceiling(6 * runif(1))
+set.seed(12345)
+
+A_wins <- function()
+{rand_nbr <- ceiling(6 * runif(1))
  if(rand_nbr == 6) return(1L)
  while(1) {
     B_rand_nbr <- sum(ceiling(6 * runif(2)))
@@ -22,7 +23,7 @@ A_wins <- function(seed = 12345)
 }
 
 N <- 1e6
-mean(vapply(1:N, A_wins, numeric(1))) # 0.508656
+mean(vapply(1:N, function(i) A_wins(), numeric(1))) # 0.508088
 # (10355/22631)?
 
 q_a <- 31/36
